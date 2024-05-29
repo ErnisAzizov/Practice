@@ -21,7 +21,6 @@ def main(message):
 def main(message):
     bot.send_message(message.chat.id, 'Введите текст')
     bot.register_next_step_handler(message, text)
-
 def text(message):
     tts=gTTS(message.text, lang='ru')
     tts.save(f'{message.from_user.id}.mp3')
