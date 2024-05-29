@@ -1,0 +1,2 @@
+pyTelegramBotAPI 4.18.1 - telebot
+gTTS 2.5.1 - gtts
