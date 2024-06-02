@@ -23,20 +23,10 @@ def text(message):
     if message.text.lower() == '/stop':
         bot.send_message(message.chat.id, 'Процесс приостановлен')
         user_states[message.chat.id] = None
-    elif message.text.strip()!= '' and message.text.replace('.', '', 1).strip()!= '':
-        tts=gTTS(message.text, lang='ru')
+    else:
+        text_with_symbol = message.text + "§"
+        tts=gTTS(text_with_symbol, lang='ru')
         tts.save(f'{message.from_user.id}.mp3')
         bot.send_voice(message.chat.id, open(f"{message.from_user.id}.mp3", 'rb'))
-    else:
-        bot.send_message(message.chat.id, 'Произошла ошибка!')
         
 bot.polling(non_stop=True)
-
-
-#Символы — . , () [] : ; ! ?  не вводятся по отдельности
-
-#Символы ₽ · • ♪ § ¢ ✓ вводятся, но не воспроизводятся
-
-#На гифки и стикеры никак не реагирует
-
-#Озвучивает каждый эмодзи
